@@ -1,0 +1,25 @@
+<!-- 声明HTML版本(5) -->
+<!doctype html>
+<!-- 唯一的根元素 -->
+<html>
+	<!-- 写网页的基本声明信息 -->
+	<head>
+		<!-- 声明该网页内容的编码 -->
+		<meta charset="UTF-8">
+		<!-- 声明该网页的标题 -->
+		<title>第一个网页</title>
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<script>
+			$(function(){
+				$('#approveTask').on('click', function() {
+					$('#remark').val("");
+				});
+			});		
+		</script>
+	</head>
+	<!-- 写网页的内容 -->
+	<body>
+		<input type="button" id="approveTask" value="按钮"/>
+		<input type="text" id="remark" value="111111111111111111"/>
+	</body>
+</html>

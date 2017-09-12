@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合成事件</title>
+    <style>
+        .big {
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            // hover == onmouseover+onmouseout
+            $("img").hover(function () {
+                // 悬停时
+                //console.log(e.target);
+                //console.log(this);
+                $(this).addClass("big");
+            },function () {
+                // 离开时
+                $(this).removeClass("big");
+                // $(this).toggleClass("big");
+            });
+
+            $("#b1").click(function () {
+                // 若目标已隐藏，则将其显示；
+                // 若目标已显示，则将其隐藏；
+               $("img").toggle();
+            });
+
+            // 页面加载后用jQuery自动点击此按钮。
+            // trigger就是用jQuery代替人工，模拟触发某事件。
+            $("#b1").trigger("click");
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="切换" id="b1"/>
+    <p>
+        <img src="../images/01.jpg"/>
+        <img src="../images/02.jpg"/>
+        <img src="../images/03.jpg"/>
+    </p>
+</body>
+</html>

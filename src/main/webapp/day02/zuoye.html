@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打分案例</title>
+    <style>
+        #d1 {
+            margin-left: 30px;
+            width: 220px;
+            text-align: right;
+            font-family: "黑体";
+        }
+        input {
+            border: 1px solid red;
+            line-height: 25px;
+            text-align: right;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+    	$(function () {
+			$("#btn").click(function(){
+				var $ins = $("#d2 :text");
+				//console.log($ins.eq(0));
+				var n = 0;
+				var id1 = setInterval(function(){
+					//alert(0);
+					$ins.eq(n).trigger("focus");
+					var num = parseInt(Math.random()*100);
+					//alert(num);
+					$ins.eq(n).val(num);
+					n++;
+					if(n==6) clearInterval(id1);
+				},1000);
+			});
+		});
+    </script>
+</head>
+<body>
+    <div id="d1">
+        <p><input type="button" value="打分" id="btn"/></p>
+        <div id="d2">
+            <p>苍老师: <input type="text"></p>
+            <p>范传奇: <input type="text"></p>
+            <p>王克晶: <input type="text"></p>
+            <p>李洪鹤: <input type="text"></p>
+            <p>程祖红: <input type="text"></p>
+            <p>梁建全: <input type="text"></p>
+        </div>
+    </div>
+</body>
+</html>

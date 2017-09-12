@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery对象</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        // jQuery->DOM
+        function dayin() {
+            // 选择器选中的目标是jQuery对象
+            var $ps = $("p"); // 规范：jQuery对象以$开头
+            for (var i=0;i<$ps.length;i++) {
+                // 从jQuery对象中获取的单个对象是DOM
+                var p = $ps[i]; // DOM对象
+                // DOM对象只能调用DOM的API
+                alert(p.innerHTML);
+            }
+        }
+
+        // DOM->jQuery
+        // 传入的this是DOM对象
+        function chg(img) {
+            //jQuery读写宽高的方式:
+            //$obj.width()/$obj.width(值)
+            //#obj.height()/$obj.height(值)
+            if($(img).width() == "218") {
+                $(img).width("250").height("250");// 返回的是jQuery对象
+            } else {
+                $(img).width("218").height("218");
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>1.选择器选中的目标是1个jQuery对象</p>
+    <p>2.jQuery对象本质上是1个DOM数组</p>
+    <p>3.jQuery对象只能调用jQuery的API</p>
+    <input type="button" value="打印" onclick="dayin();"/>
+
+    <div>
+        <img src="../images/01.jpg" onclick="chg(this);"/>
+        <img src="../images/02.jpg" onclick="chg(this);"/>
+        <img src="../images/03.jpg" onclick="chg(this);"/>
+    </div>
+</body>
+</html>

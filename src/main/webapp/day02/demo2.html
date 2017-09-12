@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        // $()内的方法在页面加载后自动调用。
+        // 此处的$() == window.onload
+        // onload只能出现一次。$()可以写多次。
+        $(function (e) {
+            //alert("你好");
+            $("#a").click(function (e) {
+                alert("我是AAA");
+                console.log(e);
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="AAA" id="a"/>
+</body>
+</html>

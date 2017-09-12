@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        p {
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            padding: 30px;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+           $("p").click(function (e) {
+               alert("我是p");
+               console.log(e.target); // 获取事件源
+           });
+
+           $(":button").click(function (e) {
+               alert("我是button");
+               //e.stopPropagation(); // 取消冒泡
+           });
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <input type="button" value="AAA"/>
+        <input type="button" value="BBB"/>
+        <input type="button" value="CCC"/>
+    </p>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>无缝滚动</title>
+<style type="text/css">
+	body>div {
+		margin: 40px auto;
+	}
+	#d1,#d2 {
+		/* border: 1px solid red; */
+		width: 570px;
+		height: 120px;
+		position: relative;
+	}
+	#d1>div,#d2>div {
+		/* border: 1px solid red; */
+		width: 100px;
+		height: 100px;
+		background-color: #EFEFEF;
+		color: #5282A7;
+		float: left;
+		margin-left: 10px;
+		line-height: 100px;
+		text-align: center;
+		font-size: 40px;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script>
+    var id = null;
+    // 轮播
+    function lunbo() {
+        id = setInterval(function () {
+            // 获取所有图片
+            var $divs = $("#d1>div");
+           // console.log($divs.length);
+            //return;
+            // 将他们都隐藏
+            for (var i = 0; i < $divs.length; i++) {
+            	//console.log($divs.eq(i).html());
+            	if($divs.eq(i).html()==1){
+            		$divs.eq(i).html("5");
+            	} else {
+            		//$divs.eq(i).html($divs.eq(i).html()++);
+            		var n = $divs.eq(i).html();
+            		$divs.eq(i).html(--n);
+            	}
+            }
+        },1200);
+    }
+
+    // 暂停轮播
+    function pause1() {
+        clearInterval(id);
+    }
+    var id2 = null;
+    // 轮播
+    function lunbo2() {
+        id2 = setInterval(function () {
+            // 获取所有图片
+            var $divs2 = $("#d2>div");
+           // console.log($divs.length);
+            for (var i = 0; i < $divs2.length; i++) {
+            	//console.log($divs.eq(i).html());
+            	if($divs2.eq(i).html()==5){
+            		$divs2.eq(i).html("1");
+            	} else {
+            		//$divs.eq(i).html($divs.eq(i).html()++);
+            		var n = $divs2.eq(i).html();
+            		$divs2.eq(i).html(++n);
+            	}
+            }
+        },1200);
+    }
+    // 在页面加载后，自动调用轮播。
+    lunbo();
+    lunbo2();
+
+    // 暂停轮播
+    function pause2() {
+        clearInterval(id2);
+    }
+</script>
+</head>
+<body>
+	<div id="d1" onmouseover="pause1();" onmouseout="lunbo();">
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+	<div id="d2" onmouseover="pause2();" onmouseout="lunbo2();">
+		<div class="a">1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自动打分</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+    	$(function(){
+    		$(":button").click(function(){
+				var n = 0; // 循环次数
+    			var id = setInterval(function(){
+    				//为第n个文本框切入光标
+    				$(":text").eq(n).trigger("focus");
+    				//给这个文本框中打分(随机数)
+    				$(":text").eq(n++).val(parseInt(Math.random()*100));
+    				//打完分则停止定时器
+    				if(n==$(":text").length-1) {
+    					clearInterval(id);
+    				}
+    			},1500);
+    		});
+    	});
+    </script>
+</head>
+<body>
+	<p><input type="button" value="打分"/></p>
+	<p>
+		刘苍松:<input type="text"/>
+	</p>
+	<p>
+		范传奇:<input type="text"/>
+	</p>
+	<p>
+		王克晶:<input type="text"/>
+	</p>
+	<p>
+		程祖红:<input type="text"/>
+	</p>
+	<p>
+		李鸿鹤:<input type="text"/>
+	</p>
+</body>
+</html>

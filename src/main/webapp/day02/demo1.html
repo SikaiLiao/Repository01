@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery操作DOM</title>
+    <style>
+        .big {
+            font-size: 30px;
+        }
+        .important {
+            color: red;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        window.onload = function () {
+            // 1.读写节点
+            // 1.1 html() = innerHTML
+            console.log($("li:eq(0)").html());
+            $("li:eq(0)").html("苍<b>老师</b>");
+            // 1.2 text() = innerText
+            // 1.3 attr() = getAttribute()+setAttribute()
+            console.log($("img").attr("src"));
+            $("img").attr("src","../images/02.jpg");
+            // 1.4 val() = value
+            console.log($(":button").val());
+            $(":button").val("DD");
+
+            // 2.增删节点
+            // 2.1 创建节点
+            var $li1 = $("<li>程祖红</li>");
+            var $li2 = $("<li>梁建全</li>");
+            //console.log(li1);//是jQuery对象
+            // 2.2 增加节点
+            $("ul").prepend($li1);
+            $("li:contains('苍')").after($li2);
+            // 2.3 删除节点
+            $("li:contains('苍')").remove();
+            // 等价于 obj.html("")
+            $("ul li:last").empty();
+
+            // 3.根据层次查询节点
+            // 先获取某元素，对其进行一些处理
+            var $ol = $("ol");
+            var $sd = $("#sd");
+            // 再获取该元素的亲属，进一步处理
+            console.log($ol.children());
+            console.log($sd.prev()); // 哥哥
+            console.log($sd.siblings()); // 所有兄弟
+            console.log($ol.find("li:contains('东')"));
+
+            // 4.样式操作
+            $("#p2").addClass("big").addClass("important");
+            // $("#p1").removeClass("big").removeClass("important");
+            $("#p2").removeClass();
+            console.log($("#p2").hasClass("big"));
+        }
+
+        function qiehuan() {
+            // 若元素没有big，则增加big样式；
+            // 若元素已有big，则去掉big样式；
+            $("#p3").toggleClass("big"); // 切换
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>苍老师</li>
+        <li>范传奇</li>
+        <li>王克晶</li>
+    </ul>
+    <p><img src="../images/01.jpg"></p>
+    <p><input type="button" value="CC"/></p>
+    <ol>
+        <li>广东省</li>
+        <li>福建省</li>
+        <li id="sd">山东省</li>
+        <li>浙江省</li>
+        <li>江苏省</li>
+    </ol>
+    <p id="p1" class="big important">aaa</p>
+    <p id="p2">bbb</p>
+    <p id="p3">ccc</p>
+    <input type="button" value="切换" onclick="qiehuan();"/>
+</body>
+</html>

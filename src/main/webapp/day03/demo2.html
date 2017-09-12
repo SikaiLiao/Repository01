@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery动画</title>
+<style>
+	img {
+		/*动画基于定位，通常使用相对定位。*/
+		position: relative;
+	}
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	function f1(){
+		//$("img").show(3000); // 会变淡
+		//$("img").slideDown(3000); // 清晰度不变
+		$("img").fadeIn(3000,function() { // 可以带回调函数
+			alert("显示完毕");
+		}); // 渐变
+	}
+	function f2(){
+		//$("img").hide(3000);
+		//$("img").slideUp(3000);
+		$("img").fadeOut(3000,function() {
+			alert("已隐藏");
+		});
+	}
+	function f3() {//方式3应用
+		//属性过滤选择器
+		$("p[style]").fadeIn(800).fadeOut(3000);
+	}
+	function f4() {//方式4(需要css定义positon属性)
+		// 相对定位: 相对于自己原来的位置定位
+		$("img").animate({"left":"300px"},2000).animate({"top":"300px"},2000).animate({"left":"0px"},2000);
+	}
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="显示" onclick="f1();"/>
+		<input type="button" value="隐藏" onclick="f2();"/>
+		<input type="button" value="删除" onclick="f3();"/>
+		<input type="button" value="动起来" onclick="f4();"/>
+	</p>
+	<p>
+		<img src="../images/01.jpg"/>
+	</p>
+	<p style="display:none;">操作成功</p>
+</body>
+</html>

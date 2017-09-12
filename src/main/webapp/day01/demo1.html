@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的使用步骤</title>
+    <!-- 必须在自定义的js前引入jQuery -->
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        function bigger() {
+            // 获取段落原始的字号(16px)
+            //$("p"); // 获取所有的p
+            var size = $("p").css("font-size");
+            //console.log(size);
+            // 去除字号上面的单位px
+            size = size.replace("px","");
+            // 字号+1再设置给所有的p
+            $("p").css("font-size",++size+"px");
+        }
+        function smaller() {
+            // 获取段落原始的字号(16px)
+            var size = $("p").css("font-size");
+            // 去除字号上面的单位px
+            size = size.replace("px","");
+            // 字号-1再设置给所有的p
+            $("p").css("font-size",--size+"px");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="+" onclick="bigger();"/>
+    <input type="button" value="-" onclick="smaller();"/>
+    <p>jQuery的使用步骤:</p>
+    <p>1.引入jQuery</p>
+    <p>2.使用选择器选中DOM节点</p>
+    <p>3.调用API操作DOM节点</p>
+</body>
+</html>
